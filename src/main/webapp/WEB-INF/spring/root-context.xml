@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:util="http://www.springframework.org/schema/util"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd
+		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.3.xsd
+		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.3.xsd
+		http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-4.3.xsd">
+   
+   <util:properties id="api" location="classpath:config/application.properties"/>
+   
+   <!-- 1.jdbc.properties등록 -->
+   <context:property-placeholder location="classpath:config/oracle.properties" />
+
+   <!-- 2.dbcp2생성: jdbc.properties이용: 커넥션풀 -->
+   <bean id="dataSource" class="org.apache.commons.dbcp2.BasicDataSource">
+      <property name="driverClassName" value="${oracle.driver}" />
+      <property name="url" value="${oracle.url}" />
+      <property name="username" value="${oracle.userid}" />
+      <property name="password" value="${oracle.passwd}" />
+   </bean>
+
+   <!-- 3. transaction 처리 시작 -->
+   <bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+      <property name="dataSource" ref="dataSource" />
+   </bean>
+   <tx:annotation-driven/>
+
+
+   <!-- 4. SqlSessionFactoryBean 생성 -->
+   <bean id="sessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+      <property name="dataSource" ref="dataSource" />
+      <property name="mapperLocations">
+         <list><!-- mapper등록 -->
+             <value>classpath:mappers/member/memberMapper.xml</value>
+             <value>classpath:mappers/board/boardMapper.xml</value>
+             <value>classpath:mappers/comments/commentsMapper.xml</value>
+             <value>classpath:mappers/goods/goodsMapper.xml</value>
+         </list>
+      </property>
+      <property name="typeAliases">
+         <list><!-- dto등록 -->
+         <!-- alias주소는 각 클래스에서 alias 어노테이션으로 설정 -->
+            <value>com.dto.AgreeDTO</value>
+            <value>com.dto.MemberDTO</value>
+            <value>com.dto.RegistrationDTO</value>
+            <value>com.dto.BoardDTO</value>
+            <value>com.dto.CommentsDTO</value>
+            <value>com.dto.GoodsDTO</value>
+         </list>
+      </property>
+   </bean>
+
+   <!-- 5. SqlSessionTemplate: SqlSession기능 / 실제 db연동에 사용 -->
+   <bean id="sqlSessionTemplate" class="org.mybatis.spring.SqlSessionTemplate">
+      <constructor-arg name="sqlSessionFactory" ref="sessionFactory" />
+   </bean>
+   
+   <context:component-scan base-package="com.*" />
+
+      
+</beans>

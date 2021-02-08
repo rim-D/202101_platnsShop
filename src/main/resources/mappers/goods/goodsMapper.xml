@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="goods">
+
+	<!-- 상품 리스트 -->
+	<select id="goodsList" resultType="goodsDTO" parameterType="hashmap">
+		select G_CODE, G_L_CODE, G_M_CODE, NAME, MEMO, PRICE, IMAGE, RECEIVE_DATE, HITS
+		from goods
+		where 1=1
+		<if test='g_l_code != ""'>
+		and	G_L_CODE = #{g_l_code}
+		</if>
+		<if test='name != ""'>
+		and	NAME like '%' || #{name} || '%'
+		</if>
+		<choose>
+			<when test='order_num == "1"'>
+				order by RECEIVE_DATE
+			</when>
+			<when test='order_num == "2"'>
+				order by NAME
+			</when>
+			<when test='order_num == "3"'>
+				order by PRICE desc
+			</when>
+			<when test='order_num == "4"'>
+				order by PRICE
+			</when>
+			<when test='order_num == "5"'>
+				order by HITS desc
+			</when>
+		</choose>
+	</select>
+	
+	<!-- 상품한개만 -->
+	<select id="getGoods" resultType="goodsDTO">
+		select	g_code, name, memo, image, price
+		from goods
+		where	 g_code = #{g_code}
+	</select>
+	
+	<!-- 상품 옵션 -->
+	<select id="getGoodsOptions" resultType="goodsDTO">
+		select a.g_d_code, a.option1, b.code_name, a.quantity
+		from	goods_detail a
+		join codes b
+		on a.option1 = b.code
+		where a.g_code = #{g_code}
+		order by	a.option1
+	</select>
+
+</mapper>

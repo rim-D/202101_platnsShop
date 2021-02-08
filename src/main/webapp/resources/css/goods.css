@@ -1,0 +1,200 @@
+@charset "UTF-8";
+/* 
+ ==================
+ ***** GOODS *****
+ ==================
+*/
+.goods_list_tit {
+	font-size: 20px;
+	letter-spacing: 1px;
+	line-height: 26px;
+	text-transform: uppercase;
+	margin-bottom: 40px;
+}
+.goods_list_subtit {
+	font-size: 14px;
+	font-weight: 100;
+	color: #b9b9b9
+}
+.goods_count {
+	margin-bottom: 10px;
+}
+.goods_sort {
+	display: block;
+	margin-bottom: 40px;
+	float: right;
+}
+.goods_sort  li {
+	display: inline-block;
+}
+.goods_sort label {
+	padding: 0 0 0 18px;
+}
+.goods_sort label.on {
+    background: url(../images/icon_sort_check.png) no-repeat left 5px;
+}
+.goods_list_wrap {
+	padding: 50px 0;	
+}
+.goods_list {
+    display: flex;
+    width:100%;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+}
+.goods_list li {
+    width: 25%;
+    min-height: 50px;
+    padding: 0 10px;
+}
+.goods_img_scale {
+	overflow: hidden;
+}
+.goods_img {
+	width: 100%;
+    border: 1px solid #f8f8f8;
+    transform: scale(1);
+    -webkit-transform: scale(1);
+    -moz-transform: scale(1);
+    -ms-transform: scale(1);
+    -o-transform: scale(1);
+    transition: all 0.4s ease-in-out;
+}
+.goods_img:hover {
+	transform: scale(1.2);
+    -webkit-transform: scale(1.2);
+    -moz-transform: scale(1.2);
+    -ms-transform: scale(1.2);
+    -o-transform: scale(1.2);
+}
+.goods_list li img {
+    width: 100%;
+}
+.goods_list li span {
+    display: block;
+}
+.goods_detail_box {
+    padding: 10px 0 50px;
+}
+.goods_name:after {
+    content: '';
+    display: block;
+    width: 100%;
+    height: 1px;
+    background-color: #e3e3e3;
+    margin: 10px 0;
+}
+.goods_name em {
+    max-width: 250px;
+    display: block;
+    color: #777777;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+    margin-top: 10px;
+}
+.goods_price {
+    font-size: 18px;
+    font-weight: bold;
+    text-align: right;
+}
+.goods_price:after {
+    content: '원';
+    display: inline-block;
+    font-size: 16px;
+    vertical-align: middle;
+    margin-left: 4px;
+}
+
+
+/* 상세페이지 --- goodsRetrieve */
+.goodsRetrieve {
+    margin: 50px 0;
+}
+.goodsRetrieve_box {
+	display: flex;
+	justify-content: space-between;
+}
+.goodsRetrieve_cover {
+    width: 50%;
+    height: 540px;
+}
+.goodsRetrieve_cover img {
+    width: 100%;
+    height: 100%;
+    cursor: pointer;
+}
+.goodsRetrieve_description {
+    width: 50%;
+    height: 540px;
+    box-sizing: border-box;
+    padding-left: 10%;
+}
+.goodsRetrieve_description h2 {
+	font-size: 24px;
+	margin: 8px 0;
+}
+.goodsRetrieve_description h2::after {
+    content: '';
+    display: block;
+    width: 100%;
+    height: 1px;
+    background-color: #c0c0c0;
+    margin: 8px 0;
+}
+.goodsRetrieve_info dl {
+	font-size: 12px;
+    margin: 25px 0;
+    line-height: 16px;
+}
+.goodsRetrieve_info dl dt,
+.goodsRetrieve_info dl dt label {
+	float: left;
+    width: 95px;
+    margin-right: 10px;
+	padding: 2px 0;
+}
+.g_price::after,
+.g_price_sale::after {
+    content: '원';
+    display: inline-block;
+}
+.goodsRetrieve_info select {
+    width: 50%;
+    padding: 4px;
+    display: block;
+    border: 1px solid #999;
+	color: #999;
+}
+.order-btn {
+    display: flex;
+}
+.order-btn input.number {
+    width: 20px;
+    margin-right: 20px;
+}
+.order-btn button {
+    padding: 5px 10px;
+    background-color: #333;
+    color: #fff;
+    font-size: 18px;
+    border-radius: 2px;
+    border: none;
+    margin-right: 5px;
+}
+.btn-area {
+    width: 100%;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: space-between;
+}
+.btn-area button {
+	width: 50%;
+	padding: 18px 10px;
+	border-radius: 5px;
+	margin-right: 5px;
+}
+.btn-area button:last-child {
+	margin-right: 0;
+}
+

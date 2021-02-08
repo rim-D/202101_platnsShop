@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 다른 mapper와 중복되지 않도록 네임스페이스 기재 -->
+<mapper namespace="comment">
+	<!-- 댓글 작성 -->
+	<insert id="insertComments">
+		insert into comments(c_no, no, c_content, creater, create_date, modify_date, modifier, nickname) 
+		values (reply_seq.nextval, #{no}, #{c_content}, #{creater}, to_char(sysdate, 'YYYYMMDD'), to_char(sysdate, 'YYYYMMDD'), #{modifier}, #{nickname}) 
+	</insert>
+	
+	<!-- 댓글 갯수 -->
+	<select id="count" resultType="int">
+		select count(*) 
+		from comments
+		where no = #{no}
+	</select>
+	
+	<!-- 댓글 목록 -->
+	<select id="listComment" resultType="commentsDTO">
+		select c.c_no, c.no, c.c_content, c.creater, c.create_date, c.modify_date, c.modifier, m.name, c.nickname
+		from comments c, member m
+		where c.creater = m.id
+		and no = #{no}
+		order by c_no desc
+	</select>
+</mapper>

@@ -1,0 +1,495 @@
+@charset "UTF-8";
+/* 
+ ================
+ ***** FONT *****
+ ================
+*/
+:root {
+    font-family: 'S-CoreDream-3Light', -apple-system, BlinkMacSystemFont, Roboto, sans-serif;
+    font-size: 16px;
+    line-height: 1;
+    color: #3a3a3a;
+    --main-color: #023d16;
+}
+.s { /* 폰트 소문구 버전 */
+    font-size: 12px;
+}
+.b { /* 폰트 타이틀 버전 */
+    font-size: 28px;
+}
+
+.heavy {
+    font-family: 'S-CoreDream-8Heavy';
+}
+.black {
+    font-family: 'S-CoreDream-9Black';
+}
+.medium {
+    font-family: 'S-CoreDream-5Medium';
+}
+.light {
+    font-family: 'S-CoreDream-3Light';
+}
+.extraLight {
+    font-family: 'S-CoreDream-2ExtraLight';
+}
+
+
+/* 
+ ==================
+ ***** COMMON *****
+ ==================
+*/
+.wrap {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+.c_wrap {
+	max-width: 960px;
+    margin: 0 auto;
+}
+.blind {
+    position: absolute;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    margin: -1px;
+    width: 1px;
+    height: 1px;
+}
+.clearfix::after {
+    content: '';
+    display: block;
+    clear: both;
+}
+.left { float: left; }
+.right { float: right; }
+input[type="checkbox"] {
+    width: 20px;
+    height: 20px;
+    border: 0;
+    padding: 0;
+    font-size: 0;
+    line-height: 0;
+    margin-right: 8px;
+    vertical-align: top;
+    cursor: pointer;
+    background: url(../images/icon_chk_radio.png) no-repeat 0 0;
+}
+input[type="checkbox"]:checked {
+    background: url(../images/icon_chk_radio.png) no-repeat -20px 0;
+}
+select {
+	background: url(../images/select_arrw.png) no-repeat right 50%;
+}
+.btn {
+    color: #fff;
+    background-color: var(--main-color);
+}
+.btn_gray {
+    color: #fff;
+    background-color: #666666;
+}
+.btn_white {
+    color: var(--main-color);
+    background: transparent;
+    border: 1px solid var(--main-color);
+}
+/* 
+ ==================
+ ***** HEADER *****
+ ==================
+*/
+.header {
+    border-bottom: 1px solid var(--main-color);
+}
+.main_inner {
+    position: relative;
+    height: 94px;
+}
+.main_logo {
+    position: absolute;
+    left: 0;
+    bottom: 15px;
+    display: block;
+    background: url(../images/logo_off.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    width: 249px;
+    height: 52px;
+}
+.main_nav_util {
+    z-index: 100;
+    width: 100%;
+}
+.main_nav_member {
+    float: right;
+    height: 40px;
+    padding: 15px 0 5px 0;
+    text-align: center;
+}
+.main_nav_member li{
+    float: left;
+}
+.main_nav_member li a.login {
+    position: relative;
+}
+.main_nav_member li a.login::after {
+    position: absolute;
+    right: -5px;
+    bottom: 2px;
+    content: '';
+    display: inline-block;
+    width: 1px;
+    height: 12px;
+    background-color: #3a3a3a;
+}
+.main_nav_member li a {
+    display: inline-block;
+    margin-left: 10px;
+}
+.member_point {
+    color: #d62323;
+}
+.search {
+    position: relative;
+}
+.search_modal { /* search 모달 배경 */
+    display: none;
+    z-index: 9999;
+    position: fixed;
+    left: 0px;
+    top: 0px;
+    width: 100vw;
+    height: 100vh;
+    overflow: auto;
+    background-color: rgba(0,0,0,0.3);
+}
+.search_modal_contents { /* search 모달 컨텐츠 */
+    display: none;
+    width: 380px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 0 0 16px -3px rgba(0,0,0,.2);
+}
+.search_modal_wrap {
+    width: 70%;
+    margin: 0 auto;
+    padding: 50px 0;
+}
+#search {
+    width: 100%;
+    box-sizing: border-box;
+}
+.title_box {
+    display: flex;
+    justify-content: space-between;
+}
+.search_box {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 0 5px;
+    border-bottom: 1px solid #3a3a3a;
+}
+.main_nav {
+    height: 54px;
+    line-height: 25px;
+    float: right;
+}
+.main_nav li {
+    display: inline-block;
+}
+.main_nav li a {
+    display: block;
+    padding: 5px 15px 15px;
+}
+.main_nav li a:last-child {
+    padding-right: 0;
+}
+
+
+
+/* m a i n */
+.main {
+    text-transform: uppercase;
+    color: #fff;
+}
+
+.main .main_cover {
+    position: relative;
+    height: 80vh;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    
+}
+
+.main_cover_1 { background-image: url(../images/mv1.jpg); }
+.main_cover_2 { background-image: url(../images/mv2.jpg); }
+
+.main_desc {
+    position: absolute;
+    right: 20%;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.main_title {
+    font-size: 4rem;
+    font-weight: 500;
+    line-height: 1.2;
+    letter-spacing: -5px;
+    padding-bottom: 20px;
+}
+
+.main_title span {
+    display: block;
+}
+
+.main_title_sub {
+    font-weight: 300;
+    padding-bottom: 20px;
+    line-height: 1.4;
+}
+.main_title_sub span {
+    display: block;
+}
+.main_btn {
+    position: relative;
+    font-size: 1.5rem;
+    font-weight: 500;
+    padding: 20px;
+    border: 1px solid #fff;
+    border-radius: 5px; 
+    overflow: hidden;
+    color: #fff;
+}
+
+.main_btn::after {
+    content: ' ';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 10;
+    transform: translateX(-100%);
+    transition:  transform 0.35s;
+}
+.main_btn_v1::after { background-image: linear-gradient(120deg, #669c1d 0%, #3a7227 100%); }
+.main_btn_v2::after { background-image: linear-gradient(45deg, #ff9a9e 0%, #fad0c4 99%, #fad0c4 100%); } 
+
+.btn_text {
+    text-transform: uppercase;
+    position: relative;
+    z-index: 20;
+}
+
+.main_btn:hover::after {
+    transform: scale(1, 1);
+}
+
+.slick-prev,
+.slick-next { 
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 20;
+    width: 72px;
+    height: 72px;
+    font-size: 0;
+}
+
+.slick-prev::before,
+.slick-next::before {
+    font-family: 'xeicon'; 
+    color: white;
+    font-size: 45px;
+}
+
+.slick-prev { left: 10px; }
+.slick-prev::before { content: '\e93d'; }
+.slick-next { right: 10px; }
+.slick-next::before { content: '\e940'; }
+
+
+/* 
+ ==================
+ ***** login - modal *****
+ ==================
+*/
+.member_login {
+    background-color: #f1f1f1;
+}
+.member_login_contents {
+    max-width: 550px;
+    margin: 0 auto;
+    padding: 120px 0;
+}
+.login_title_box {
+    margin-bottom: 18px;
+    text-align: center;
+}
+.login_title_box h2 {
+    margin-bottom: 10px;
+    font-size: 38px;
+}
+.login_title_box p {
+    font-size: 15px;
+}
+.member_login_box {
+    background-color: #fff;
+    margin: 0 auto;
+    padding: 50px;
+    border-top: 4px solid var(--main-color);
+}
+.member_login_title dt {
+    color: var(--main-color);
+    margin-bottom: 8px;
+}
+.member_login_title dd {
+    line-height: 1.2;
+    margin-bottom: 20px;
+    letter-spacing: 1;
+}
+.login_box {
+    display: block;
+    border: 1px solid #999;
+    padding: 10px;
+    margin-bottom: 12px;
+}
+.login_btn, .member_btn {
+    width: 100%;
+    display: block;
+    background: var(--main-color);
+    padding: 10px;
+    cursor: pointer;
+    color: #fff;
+    border-radius: 25px;
+    margin-bottom: 12px;
+}
+.member_btn {
+	color: var(--main-color);
+	background-color: transparent;
+	border: 1px solid var(--main-color);
+}
+.login_btn:hover {
+	background-color: #286c33;
+}
+.member_btn:hover {
+	color: #fff;
+    background-color: #286c33;
+}
+.login_detail {
+    width: 100%;
+    height: 20px;
+    line-height: 20px;
+}
+.login_detail .left {
+    float: left;
+}
+
+.login_detail .right {
+    float: right;
+}
+.right a {
+    display: block;
+}
+.right a:hover {
+    font-weight: bold;
+    color: var(--main-color);
+}
+.kakaologin::before {
+    content: '';
+    display: block;
+    width: 100%;
+    height: 1px;
+    border-bottom: 1px solid #999;
+    margin: 40px 0;
+}
+.kakaologin p:first-child {
+    line-height: 1.3em;
+}
+.kakaologin_btn {
+    display: block;
+    width: 170px;
+    height: 40px;
+    line-height: 40px;
+    background-color: #f9e003;
+    border-radius: 5px;
+    text-align: center;
+}
+.kakaologin_btn .icon {
+    background: url(../images/logo_kakao.png) no-repeat 0 0;
+    background-size: 20px auto;
+    padding-left: 26px; 
+    margin: 0 auto;
+}
+
+/* 
+ ==================
+ ***** FOOTER *****
+ ==================
+*/
+.footer {
+	padding: 20px 0;
+	background: #f6f6f6;
+	font-size: 11px;
+	border-top: 1px solid #e3e3e3;
+}
+.foot_logo {
+	display: block;
+}
+.foot_logo img {
+	width: 100%;
+}
+.foot_list {
+	border-bottom:1px solid #e3e3e3; 
+	line-height:1;
+	display: flex;
+	justify-content: space-between;
+	padding: 20px 0;
+}
+.foot_list ul li {
+	line-height: 40px;
+}
+
+.foot_sns {
+	padding: 20px 0;
+}
+.foot_sns span {
+	margin-right: 10px;
+}
+/* 회사 정보 */
+.foot_cont{
+	overflow:hidden; 
+	padding-bottom: 35px; 
+	color:#a9a9a9; 
+	font-size:11px;
+	line-height:1.8;
+}
+.foot_logo{
+	display:block; 
+	width:200px; 
+	padding:25px 0 0 0;
+}
+.foot_info{
+	display:inline-block; 
+	float:left;
+}
+.foot_info_list{
+	overflow:hidden; 
+	width:100%;
+}
+.foot_info_list dl{ float:left; }
+.foot_info_list dt{ float:left; }
+.foot_info_list dd{ float:left; padding:0 15px 0 3px; }
+.copyright{ float:left; }
+.foot_certify { float: right; }
+.foot_certify img { height: 23px; }
+
+

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="member">
+	<!-- 회원가입 -->
+	<insert id="memberIns" parameterType="memberDTO">
+		insert into member(id, pw, name, birth, phone, post, addr1, addr2, create_date, creater, modify_date, modifier)
+		values(#{id}, #{pw}, #{name}, #{birth} ,#{phone}, #{post}, #{addr1}, #{addr2}, TO_CHAR(SYSDATE, 'YYYYMMDD'), #{crater}, TO_CHAR(SYSDATE, 'YYYYMMDD'), #{modifier}) 
+	</insert>
+	<!-- 회원가입 동의여부-->
+	<insert id="agreeIns" parameterType="agreeDTO">
+		insert into agree(id, agree_division_cd, agree_contents_cd, agree_yn, create_date, creater, modify_date, modifier)
+		values(#{id},#{agree_divsion_cd},#{agree_contents_cd},#{agreeYn}, to_char(sysdate, 'YYYYMMDD'),#{crater}, to_char(sysdate, 'YYYYMMDD'),#{modifier})
+	</insert>
+	<!-- 회원가입 동의구분-->
+	<select id="codesSel" resultType="string" parameterType="string">
+		select code from codes where parent_code = #{value}
+	</select>
+	<!-- 로그인 -->
+	<select id="loginCheck" resultType="string">
+		select name from member
+		where id = #{id}
+		and pw = #{pw}
+	</select>
+	<!-- 마이페이지 -->
+	<select id="mypage" resultType="memberDTO">
+		select * from member
+		where id = #{userid}
+	</select>
+	<!-- 마이페이지 수정 -->
+	<update id="memberUpdate" parameterType="memberDTO">
+		update member set
+		name = #{name}, birth = #{birth}, post = #{post}, 
+		addr1 = #{addr1}, addr2 = #{addr2}, phone = #{phone}
+		where id = #{id}
+	</update>
+</mapper>

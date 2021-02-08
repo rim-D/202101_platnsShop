@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 다른 mapper와 중복되지 않도록 네임스페이스 기재 -->
+<mapper namespace="board">
+ 	<!--  게시물 갯수 -->
+	<select id="countArticle" resultType="int">
+		select count(*)
+		from board b, member m
+		<include refid="search"/>
+	</select>
+	<!-- 게시물 목록보기 -->
+	<select id="listAll" resultType="boardDTO">
+		<include refid="paging_header"/>
+		select rownum, b.no, b.title, b.contents, b.hits, b.creater, m.name, b.modifier, b.create_date, b.modify_date,
+		(select count(*) from comments where no = b.no) as cnt
+		from board b, member m
+		<include refid="search"/>
+		order by no desc
+		<include refid="paging_footer"/>
+	</select>
+	
+	<sql id="search">
+		<choose>
+			<when test='search_option == "all" '>
+				where b.creater = m.id
+				and ( name like '%' || #{keyword}||'%'
+				or contents like '%'||#{keyword}||'%'
+				or title like '%'||#{keyword}||'%' )
+			</when>
+			<otherwise>
+				where b.creater = m.id
+				and ${search_option} like '%'|| #{keyword} ||'%'
+			</otherwise>
+		</choose>
+	</sql>
+	<sql id="paging_header">
+		select *
+		from (
+	   		select rownum as rn, A.*
+	    	from(
+	</sql>
+	<sql id="paging_footer">
+			)A
+		)
+		where rn between #{start} and #{end}
+	</sql>
+	
+	
+	<insert id="insert" parameterType="boardDTO">
+		insert into board(no, title, contents, creater, create_date, modifier, modify_date)
+		values(seq_board.nextval, #{title}, #{contents}, #{creater}, to_char(sysdate, 'YYYYMMDD'), #{modifier}, to_char(sysdate, 'YYYYMMDD'))
+	</insert>
+	
+	<select id="read" resultType="boardDTO">
+		select b.no, b.title, b.contents, b.hits, b.creater, b.create_date, m.name 
+		from board b, member m
+		where b.creater = m.id 
+		and b.no = #{no}
+	</select>
+	
+	<update id="increaseViewcnt">
+		update board
+		set hits = hits + 1
+		where no = #{no}
+	</update>
+	
+	<update id="update">
+		update board
+		set title = #{title}, contents = #{contents}, modifier = #{creater}, modify_date = to_char(sysdate, 'YYYYMMDD')
+		where no = #{no}
+	</update>
+	
+	<delete id="delete">
+		delete board
+		where no = #{no}
+	</delete>
+	
+
+</mapper>

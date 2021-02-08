@@ -1,0 +1,74 @@
+@charset "UTF-8";
+
+.member_registration {
+    background-color: #f1f1f1;
+}
+
+.member_registration_contents {
+    max-width: 550px;
+    margin: 0 auto;
+    padding: 120px 0;
+}
+.member_registration_contents h2 {
+    text-align: center;
+}
+.member_registration_title {
+    margin-bottom: 8px;
+}
+.member_registration_box {
+    margin-bottom: 20px;
+}
+.member_registration_box input[type="text"],
+.member_registration_box input[type="password"] {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #b4b4b4;
+}
+.usertel_box input[type="text"],
+.post_box input[type="text"] {
+    width: 80%;
+    float: left;
+}
+.usertel_box button, 
+.post_box button {
+    width: 19%;
+    padding: 16.5px;
+    float: right;
+}
+.post_box input[type="text"], 
+.addr_box input[type="text"] {
+    margin-bottom: 5px;
+}
+.usertel_box:first-of-type {
+    margin-bottom: 8px;
+}
+.member_registration_title {
+    display: block;
+}
+.member_registration_box.agree_all_align {
+    display: flex;
+    justify-content: space-between;
+}
+.member_registration_box.agreement {
+    background-color: #fff;
+    padding: 20px;
+}
+.member_registration_box.agreement strong {
+    color: var(--main-color);
+    font-weight: bold;
+}
+.member_registration_box.agreement strong.select_disable {
+    color: #383838;
+}
+.member_registration_box.agreement label {
+    display: block;
+    margin-bottom: 8px;
+}
+.member_registration_box.agreement label:last-child {
+    margin-bottom: 0;
+}
+.join_us {
+    width: 100%;
+    padding: 20px;
+}
+
